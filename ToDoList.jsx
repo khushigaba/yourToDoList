@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollView, Pressable, View, Text, StyleSheet } from 'react-native';
 
@@ -7,7 +6,7 @@ const ToDoList = ({ tasks }) => {
     <ScrollView>
       {tasks.map((task, index) => (
         <Pressable key={index}>
-          <View style={[styles.task, task.completed ? styles.completed : null]}>
+          <View style={[styles.task, task.completed ? styles.completed : styles.incomplete]}>
             <Text style={styles.taskText}>{task.name}</Text>
           </View>
         </Pressable>
@@ -24,6 +23,13 @@ const styles = StyleSheet.create({
   },
   completed: {
     backgroundColor: '#e0e0e0',
+    textDecorationLine: 'line-through', // Strike-through for completed tasks
+    color: 'gray',                      // Gray color for completed tasks
+  },
+  incomplete: {
+    backgroundColor: '#fff',
+    textDecorationLine: 'none',         // No line-through for incomplete tasks
+    color: 'black',                     // Black color for incomplete tasks
   },
   taskText: {
     fontSize: 16,
@@ -31,4 +37,5 @@ const styles = StyleSheet.create({
 });
 
 export default ToDoList;
+
 
